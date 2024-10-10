@@ -19,6 +19,10 @@ app.get("/leaderboards", (req, res) => {
   res.render("leaderboard");
 });
 
+app.get("/quizcomplete", (req, res) => {
+  res.render("quizcomplete");
+});
+
 //Handles quiz submissions.
 app.post("/quiz", (req, res) => {
   const { answer } = req.body;
