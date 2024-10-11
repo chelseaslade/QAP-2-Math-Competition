@@ -6,11 +6,25 @@
 function getQuestion() {
   const x = Math.floor(Math.random() * (50 - 1) + 1);
   const y = Math.floor(Math.random() * (10 - 1) + 1);
+
   const symbol = ["+", "-", "*", "/"];
   const randomSymbol = symbol[Math.floor(Math.random() * symbol.length)];
+
   const question = `${x} ${randomSymbol} ${y}`;
 
-  return { question };
+  if (randomSymbol == "+") {
+    const correctAnswer = x + y;
+    return { question, correctAnswer };
+  } else if (randomSymbol == "-") {
+    const correctAnswer = x - y;
+    return { question, correctAnswer };
+  } else if (randomSymbol == "*") {
+    const correctAnswer = x * y;
+    return { question, correctAnswer };
+  } else {
+    const correctAnswer = x / y;
+    return { question, correctAnswer };
+  }
 }
 
 /**
@@ -21,7 +35,11 @@ function getQuestion() {
  * @returns {boolean} True if the answer was correct, false otherwise.
  */
 function isCorrectAnswer(question, answer) {
-  return false;
+  if (question.correctAnswer == answer) {
+    console.log("Well done, correct answer!");
+  } else {
+    console.log("Sorry, wrong answer!");
+  }
 }
 
 module.exports = {

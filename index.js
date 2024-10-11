@@ -33,7 +33,7 @@ app.post("/quiz", (req, res) => {
   //answer will contain the value the user entered on the quiz page
   //Logic must be added here to check if the answer is correct, then track the streak and redirect properly
   //By default we'll just redirect to the homepage again.
-  res.redirect("/");
+  res.redirect("/quizcomplete");
 });
 
 // Start the server
