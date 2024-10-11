@@ -3,6 +3,7 @@
  *
  * @returns {} The randomly generated math question
  */
+
 function getQuestion() {
   const x = Math.floor(Math.random() * (50 - 1) + 1);
   const y = Math.floor(Math.random() * (10 - 1) + 1);
@@ -12,19 +13,21 @@ function getQuestion() {
 
   const question = `${x} ${randomSymbol} ${y}`;
 
+  let correctAnswer = "";
+
   if (randomSymbol == "+") {
-    const correctAnswer = x + y;
-    return { question, correctAnswer };
+    correctAnswer = x + y;
   } else if (randomSymbol == "-") {
-    const correctAnswer = x - y;
-    return { question, correctAnswer };
+    correctAnswer = x - y;
   } else if (randomSymbol == "*") {
-    const correctAnswer = x * y;
-    return { question, correctAnswer };
+    correctAnswer = x * y;
   } else {
-    const correctAnswer = x / y;
-    return { question, correctAnswer };
+    correctAnswer = x / y;
   }
+
+  console.log(question);
+  console.log(correctAnswer);
+  return { question, correctAnswer };
 }
 
 /**
@@ -34,7 +37,9 @@ function getQuestion() {
  * @param {*} answer The potential answer
  * @returns {boolean} True if the answer was correct, false otherwise.
  */
+
 function isCorrectAnswer(question, answer) {
+  console.log(question);
   if (question.correctAnswer == answer) {
     console.log("Well done, correct answer!");
   } else {

@@ -1,7 +1,11 @@
 const express = require("express");
-const { getQuestion } = require("./utils/mathUtilities");
+const { getQuestion, isCorrectAnswer } = require("./utils/mathUtilities");
 const app = express();
 const port = 3000;
+
+let generateQuestion; //Global for access in GET/POST
+let leaderboard = [];
+let streak = 0;
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true })); // For parsing form data
@@ -13,7 +17,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/quiz", (req, res) => {
-  const generateQuestion = getQuestion();
+  generateQuestion = getQuestion();
   res.render("quiz", { generateQuestion });
 });
 
@@ -30,8 +34,16 @@ app.post("/quiz", (req, res) => {
   const { answer } = req.body;
   console.log(`Answer: ${answer}`);
 
+  //Check for correct answer
+  const quizResult = isCorrectAnswer(generateQuestion, answer);
+
+  //Render with result
+  res.render("quizComplete", { quizResult });
+
   //answer will contain the value the user entered on the quiz page
+
   //Logic must be added here to check if the answer is correct, then track the streak and redirect properly
+
   //By default we'll just redirect to the homepage again.
   res.redirect("/quizcomplete");
 });
