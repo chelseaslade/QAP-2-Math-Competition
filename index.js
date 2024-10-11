@@ -43,9 +43,6 @@ app.post("/quiz", (req, res) => {
     highestStreak = streak;
     streakNotice = "Correct! Streak increased by 1.";
   } else {
-    // if (streak > highestStreak) {
-    //   highestStreak = streak;
-    // }
     highestStreak = streak;
     streakNotice = `Sorry, wrong answer! You reached a streak of ${highestStreak}`;
     streak = 0;
