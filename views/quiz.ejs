@@ -7,6 +7,9 @@
         <p>Instructions: Answer the question below:</p>
 
         <h3>Question: </h3>
+        <div class="mathQ">
+            <%= generateQuestion.question %>
+        </div>
 
         <form action="/quiz" method="POST">
             <!-- This handles sending the user's answer back to the server. It's not recommended you modify this, as you shouldn't need to -->
