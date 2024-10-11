@@ -3,9 +3,10 @@ const { getQuestion, isCorrectAnswer } = require("./utils/mathUtilities");
 const app = express();
 const port = 3000;
 
-let generateQuestion; //Global for access in GET/POST
+let generateQuestion; //Global for access in both GET/POST
 let leaderboard = [];
 let streak = 0;
+let streakNotice = "";
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true })); // For parsing form data
@@ -36,16 +37,16 @@ app.post("/quiz", (req, res) => {
 
   //Check for correct answer
   const quizResult = isCorrectAnswer(generateQuestion, answer);
+  if (quizResult) {
+    streak += 1;
+    streakNotice = "Correct! Streak increased by 1.";
+  } else {
+    streak += 0;
+    streakNotice = `Sorry, wrong answer! You reached a streak of ${streak}`;
+  }
 
-  //Render with result
-  res.render("quizComplete", { quizResult });
-
-  //answer will contain the value the user entered on the quiz page
-
-  //Logic must be added here to check if the answer is correct, then track the streak and redirect properly
-
-  //By default we'll just redirect to the homepage again.
-  res.redirect("/quizcomplete");
+  //Render with result, return to quiz complete
+  res.render("quizComplete", { quizResult, streak, streakNotice });
 });
 
 // Start the server

@@ -40,11 +40,17 @@ function getQuestion() {
 
 function isCorrectAnswer(question, answer) {
   console.log(question);
+  let increaseStreak = false;
+
   if (question.correctAnswer == answer) {
     console.log("Well done, correct answer!");
+    increaseStreak = true;
   } else {
     console.log("Sorry, wrong answer!");
   }
+
+  console.log(increaseStreak);
+  return increaseStreak;
 }
 
 module.exports = {
