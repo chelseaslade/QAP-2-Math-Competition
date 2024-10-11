@@ -6,6 +6,7 @@ const port = 3000;
 let generateQuestion; //Global for access in both GET/POST
 let leaderboard = [];
 let streak = 0;
+let highestStreak = 0;
 let streakNotice = "";
 
 app.set("view engine", "ejs");
@@ -39,14 +40,24 @@ app.post("/quiz", (req, res) => {
   const quizResult = isCorrectAnswer(generateQuestion, answer);
   if (quizResult) {
     streak += 1;
+    highestStreak = streak;
     streakNotice = "Correct! Streak increased by 1.";
   } else {
-    streak += 0;
-    streakNotice = `Sorry, wrong answer! You reached a streak of ${streak}`;
+    // if (streak > highestStreak) {
+    //   highestStreak = streak;
+    // }
+    highestStreak = streak;
+    streakNotice = `Sorry, wrong answer! You reached a streak of ${highestStreak}`;
+    streak = 0;
   }
 
   //Render with result, return to quiz complete
-  res.render("quizComplete", { quizResult, streak, streakNotice });
+  res.render("quizComplete", {
+    quizResult,
+    streak,
+    streakNotice,
+    highestStreak,
+  });
 });
 
 // Start the server
