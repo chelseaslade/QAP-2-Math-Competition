@@ -1,20 +1,21 @@
 <%- include('partials/header') %>
     <main class="main-content index_container">
-        <h1>Question Complete</h1>
-        <h2> Your current streak is: </h2>
-        <h2>
-            <%= highestStreak %>
-        </h2>
-        <%= streakNotice %>
-            <a href="/quiz">
-                <a href="/leaderboards">
-                    <h3>View Leaderboards</h3>
-                </a>
+        <%- include('partials/nav') %>
+            <h1>Question Complete</h1>
+            <h2> Your current streak is: </h2>
+            <h2>
+                <%= highestStreak %>
+            </h2>
+            <%= streakNotice %>
                 <a href="/quiz">
-                    <h3>Try Again?</h3>
+                    <a href="/leaderboards">
+                        <h3>View Leaderboards</h3>
+                    </a>
+                    <a href="/quiz">
+                        <h3>Try Again?</h3>
+                    </a>
                 </a>
-            </a>
-            <a href="/">
-                <h3>Return Home</h3>
-            </a>
+                <a href="/">
+                    <h3>Return Home</h3>
+                </a>
     </main>
