@@ -1,8 +1,10 @@
 <%- include('partials/header') %>
     <main class="main-content index_container">
         <%- include('partials/nav') %>
+
             <h1>Leaderboard</h1>
             <h3>Check out the highest scores below: </h3>
+
             <% leaderboard.forEach((score, index)=> { %>
                 <div class="scoreDisplay">
                     <ul>
@@ -20,8 +22,6 @@
                     </ul>
                 </div>
                 <% }); %>
-
-
 
                     <div class="links">
                         <a href="/quiz">
