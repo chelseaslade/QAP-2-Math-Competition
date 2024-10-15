@@ -45,6 +45,7 @@ app.post("/quiz", (req, res) => {
   } else {
     highestStreak = streak;
     leaderboard.push(highestStreak);
+    leaderboard.slice(0, 10);
     console.log(leaderboard);
     streakNotice = `Sorry, wrong answer! You reached a streak of ${highestStreak}`;
     streak = 0;
