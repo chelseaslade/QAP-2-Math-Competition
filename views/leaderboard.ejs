@@ -1,7 +1,38 @@
 <%- include('partials/header') %>
     <main class="main-content index_container">
         <%- include('partials/nav') %>
+
             <h1>Leaderboard</h1>
             <h3>Check out the highest scores below: </h3>
-            <%= leaderboard %>
+
+            <% leaderboard.forEach((score, index)=> { %>
+                <div class="scoreDisplay">
+                    <ul>
+                        <li id="scoreNum">
+                            <%= index + 1 %>
+                        </li>
+                        <li>
+                            <h4>Name: <%= score.name %>
+                            </h4>
+                        </li>
+                        <li>
+                            <h4>Streak: <%= score.highestStreak %>
+                            </h4>
+                        </li>
+                    </ul>
+                </div>
+                <% }); %>
+
+                    <div class="links">
+                        <a href="/quiz">
+                            <h3>Try again?</h3>
+                        </a>
+                        <a href="/">
+                            <h3>Return Home</h3>
+                        </a>
+                        <a href="/leaderboard">
+                            <h3>View Leaderboards</h3>
+                        </a>
+                        <a href="/">
+                    </div>
     </main>

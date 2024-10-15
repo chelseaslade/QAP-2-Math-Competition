@@ -37,8 +37,8 @@ function getQuestion() {
       }
     }
 
-    console.log(question);
-    console.log(correctAnswer);
+    console.log(`Question: ${question}`);
+    console.log(`Correct Answer: ${correctAnswer}`);
     return { question, correctAnswer };
   }
 }
@@ -52,7 +52,6 @@ function getQuestion() {
  */
 
 function isCorrectAnswer(question, answer) {
-  console.log(question);
   let increaseStreak = false;
 
   if (question.correctAnswer == answer) {
@@ -62,7 +61,6 @@ function isCorrectAnswer(question, answer) {
     console.log("Sorry, wrong answer!");
   }
 
-  console.log(increaseStreak);
   return increaseStreak;
 }
 
