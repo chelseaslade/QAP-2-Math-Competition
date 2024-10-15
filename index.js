@@ -63,8 +63,8 @@ app.post("/quiz", (req, res) => {
 app.post("/leaderboard", (req, res) => {
   const { name } = req.body;
   leaderboard.push({ name, highestStreak });
+  leaderboard.sort((a, b) => b - a);
   leaderboard.slice(0, 10);
-  console.log(leaderboard);
 
   res.redirect("/leaderboard");
 });
