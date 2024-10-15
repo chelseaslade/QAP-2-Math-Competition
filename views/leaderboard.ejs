@@ -3,8 +3,25 @@
         <%- include('partials/nav') %>
             <h1>Leaderboard</h1>
             <h3>Check out the highest scores below: </h3>
-            <%= leaderboard %>
-                <%= leaderNames %>
+            <% leaderboard.forEach((score, index)=> { %>
+                <div class="scoreDisplay">
+                    <ul>
+                        <li id="scoreNum">
+                            <%= index + 1 %>
+                        </li>
+                        <li>
+                            <h4>Name: <%= score.name %>
+                            </h4>
+                        </li>
+                        <li>
+                            <h4>Streak: <%= score.highestStreak %>
+                            </h4>
+                        </li>
+                    </ul>
+                </div>
+                <% }); %>
+
+
 
                     <div class="links">
                         <a href="/quiz">

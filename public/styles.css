@@ -109,3 +109,22 @@ body {
   color: #233762;
   transition: 0.7s;
 }
+
+.scoreDisplay ul {
+  border: white 2px solid;
+  padding: 10px;
+  width: 500px;
+  text-align: center;
+}
+
+.scoreDisplay li {
+  list-style: none;
+}
+
+#scoreNum {
+  padding: 10px;
+  font-weight: 800;
+  align-items: center;
+  border: 1px solid white;
+  width: 100px;
+}

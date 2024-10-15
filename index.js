@@ -45,9 +45,9 @@ app.post("/quiz", (req, res) => {
     streakNotice = "Correct! Streak increased by 1.";
   } else {
     highestStreak = streak;
-    leaderboard.push(highestStreak);
-    leaderboard.slice(0, 10);
-    console.log(leaderboard);
+    // leaderboard.push({ highestStreak });
+    // leaderboard.slice(0, 10);
+    // console.log(leaderboard);
     streakNotice = `Sorry, wrong answer! You reached a streak of ${highestStreak}`;
     streak = 0;
   }
@@ -62,8 +62,9 @@ app.post("/quiz", (req, res) => {
 
 app.post("/leaderboard", (req, res) => {
   const { name } = req.body;
-  console.log(name);
-  leaderNames.push(name);
+  leaderboard.push({ name, highestStreak });
+  leaderboard.slice(0, 10);
+  console.log(leaderboard);
 
   res.redirect("/leaderboard");
 });
