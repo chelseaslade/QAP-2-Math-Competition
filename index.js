@@ -8,6 +8,7 @@ let leaderboard = [];
 let streak = 0;
 let highestStreak = 0;
 let streakNotice = "";
+let leaderNames = [];
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true })); // For parsing form data
@@ -23,8 +24,8 @@ app.get("/quiz", (req, res) => {
   res.render("quiz", { generateQuestion });
 });
 
-app.get("/leaderboards", (req, res) => {
-  res.render("leaderboard", { leaderboard });
+app.get("/leaderboard", (req, res) => {
+  res.render("leaderboard", { leaderboard, leaderNames });
 });
 
 app.get("/quizcomplete", (req, res) => {
@@ -50,7 +51,6 @@ app.post("/quiz", (req, res) => {
     streakNotice = `Sorry, wrong answer! You reached a streak of ${highestStreak}`;
     streak = 0;
   }
-
   //Render with result, return to quiz complete
   res.render("quizComplete", {
     quizResult,
@@ -58,6 +58,14 @@ app.post("/quiz", (req, res) => {
     streakNotice,
     highestStreak,
   });
+});
+
+app.post("/leaderboard", (req, res) => {
+  const { name } = req.body;
+  console.log(name);
+  leaderNames.push(name);
+
+  res.redirect("/leaderboard");
 });
 
 // Start the server

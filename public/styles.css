@@ -88,3 +88,24 @@ body {
   color: rgb(52, 54, 58);
   transition: 0.7s;
 }
+
+.links {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.links a {
+  color: white;
+  text-decoration: none;
+}
+
+.links a:visited {
+  color: white;
+}
+
+.links a:hover {
+  color: #233762;
+  transition: 0.7s;
+}
