@@ -73,7 +73,7 @@ app.post("/leaderboard", (req, res) => {
   //Sort by highest to lowest streak
   leaderboard.sort((a, b) => b.highestStreak - a.highestStreak);
   //Only select first 10 streaks
-  leaderboard.slice(0, 10);
+  leaderboard = leaderboard.slice(0, 10);
 
   //Redirect to leaderboard
   res.redirect("/leaderboard");
