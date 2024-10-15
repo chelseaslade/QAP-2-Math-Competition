@@ -24,7 +24,7 @@ app.get("/quiz", (req, res) => {
 });
 
 app.get("/leaderboards", (req, res) => {
-  res.render("leaderboard");
+  res.render("leaderboard", { leaderboard });
 });
 
 app.get("/quizcomplete", (req, res) => {
@@ -44,6 +44,9 @@ app.post("/quiz", (req, res) => {
     streakNotice = "Correct! Streak increased by 1.";
   } else {
     highestStreak = streak;
+    leaderboard.push(highestStreak);
+    leaderboard.slice(0, 10);
+    console.log(leaderboard);
     streakNotice = `Sorry, wrong answer! You reached a streak of ${highestStreak}`;
     streak = 0;
   }

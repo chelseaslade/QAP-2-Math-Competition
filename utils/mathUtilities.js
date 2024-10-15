@@ -5,29 +5,42 @@
  */
 
 function getQuestion() {
-  const x = Math.floor(Math.random() * (50 - 1) + 1);
-  const y = Math.floor(Math.random() * (10 - 1) + 1);
+  let decimalCheck = false;
 
-  const symbol = ["+", "-", "*", "/"];
-  const randomSymbol = symbol[Math.floor(Math.random() * symbol.length)];
+  while (decimalCheck == false) {
+    const x = Math.floor(Math.random() * (50 - 1) + 1);
+    const y = Math.floor(Math.random() * (10 - 1) + 1);
 
-  const question = `${x} ${randomSymbol} ${y}`;
+    const symbol = ["+", "-", "*", "/"];
 
-  let correctAnswer = "";
+    const randomSymbol = symbol[Math.floor(Math.random() * symbol.length)];
 
-  if (randomSymbol == "+") {
-    correctAnswer = x + y;
-  } else if (randomSymbol == "-") {
-    correctAnswer = x - y;
-  } else if (randomSymbol == "*") {
-    correctAnswer = x * y;
-  } else {
-    correctAnswer = x / y;
+    const question = `${x} ${randomSymbol} ${y}`;
+
+    let correctAnswer = "";
+
+    if (randomSymbol == "+") {
+      correctAnswer = x + y;
+      decimalCheck = true;
+    } else if (randomSymbol == "-") {
+      correctAnswer = x - y;
+      decimalCheck = true;
+    } else if (randomSymbol == "*") {
+      correctAnswer = x * y;
+      decimalCheck = true;
+    } else {
+      correctAnswer = x / y;
+
+      //Check for decimal in answer, regenerate question if so
+      if (correctAnswer - Math.floor(correctAnswer) != 0) {
+        continue;
+      }
+    }
+
+    console.log(question);
+    console.log(correctAnswer);
+    return { question, correctAnswer };
   }
-
-  console.log(question);
-  console.log(correctAnswer);
-  return { question, correctAnswer };
 }
 
 /**

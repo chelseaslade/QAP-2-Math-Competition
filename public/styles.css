@@ -52,13 +52,39 @@ body {
   margin-right: 0px;
 }
 
-.quizPageMain {
-  margin: 25px;
-  display: flex;
-  flex-direction: column;
-}
-
 .mathQ {
   margin-top: 10px;
   margin-bottom: 20px;
+}
+
+.navBar {
+  height: 40px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  margin-bottom: 20px;
+}
+
+.navBar ul {
+  display: flex;
+}
+
+.navBar li {
+  padding: 15px;
+  list-style: none;
+}
+
+.navBar a {
+  color: #5d8efb;
+  text-decoration: none;
+}
+
+.navBar a:visited {
+  color: #5d8efb;
+}
+
+.navBar a:hover {
+  color: rgb(52, 54, 58);
+  transition: 0.7s;
 }
