@@ -75,7 +75,9 @@ app.post("/quiz", (req, res) => {
 app.post("/leaderboard", (req, res) => {
   const { name } = req.body;
 
-  leaderboard.push({ name, highestStreak });
+  const streakDate = new Date().toISOString().slice(0, 10);
+
+  leaderboard.push({ name, highestStreak, streakDate });
   //Sort by highest to lowest streak
   leaderboard.sort((a, b) => b.highestStreak - a.highestStreak);
   //Only select first 10 streaks
