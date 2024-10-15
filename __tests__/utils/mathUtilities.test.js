@@ -31,6 +31,23 @@ describe("Tests for getQuestion", () => {
     }
     expect(correctAnswer).toBe(expectedAnswer);
   });
+
+  test("Check that x and y values fall into correct value ranges", () => {
+    const result = getQuestion();
+    //Need symbol to tell split where to grab x and y even though symbol won't be used
+    const [x, symbol, y] = result.question.split(" ");
+
+    const parseX = parseInt(x);
+    const parseY = parseInt(y);
+
+    //Test x
+    expect(parseX).toBeGreaterThanOrEqual(1);
+    expect(parseX).toBeLessThanOrEqual(50);
+
+    //Test y
+    expect(parseY).toBeGreaterThanOrEqual(1);
+    expect(parseY).toBeLessThanOrEqual(10);
+  });
 });
 
 //Test for correct & incorrect answers
