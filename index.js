@@ -1,3 +1,9 @@
+//QAP 2: Math Competition App
+//Student: Chelsea Slade (Mayne)
+//Instructor: Matthew English
+//Course: Full-Stack Javascript
+//Due: October 15, 2024
+
 const express = require("express");
 const { getQuestion, isCorrectAnswer } = require("./utils/mathUtilities");
 const app = express();
