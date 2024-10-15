@@ -7,15 +7,24 @@
                 <%= highestStreak %>
             </h2>
             <%= streakNotice %>
-                <a href="/quiz">
-                    <a href="/leaderboards">
-                        <h3>View Leaderboards</h3>
-                    </a>
+
+                <% if (quizResult==true) { %>
                     <a href="/quiz">
-                        <h3>Try Again?</h3>
+                        <h3>Next Question?</h3>
                     </a>
-                </a>
-                <a href="/">
-                    <h3>Return Home</h3>
-                </a>
+                    <% } %>
+
+                        <% if (quizResult==false) { %>
+                            <p>Enter your name for the leaderboards: </p>
+                            <a href="/quiz">
+                                <h3>Try again?</h3>
+                            </a>
+                            <% } %>
+                                <a href="/quiz">
+                                    <h3>Return Home</h3>
+                                </a>
+                                <a href="/leaderboards">
+                                    <h3>View Leaderboards</h3>
+                                </a>
+                                <a href="/">
     </main>

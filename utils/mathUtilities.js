@@ -66,6 +66,10 @@ function isCorrectAnswer(question, answer) {
   return increaseStreak;
 }
 
+function leaderboardDisplay(leaderboard) {
+  scoreOne = leaderboard[0];
+}
+
 module.exports = {
   getQuestion,
   isCorrectAnswer,
